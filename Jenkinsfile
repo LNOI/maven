@@ -38,7 +38,7 @@ pipeline {
                                      }
                                       stage('Push file tomcat server') {
                                                  steps {
-                                                    sh 'cp target/MyMaven.war /opt/tomcat/webapps/'
+                                                    sh 'sudo  cp target/MyMaven.war /opt/tomcat/webapps/'
                                                  }
                                       }
                                  }
