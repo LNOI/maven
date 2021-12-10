@@ -10,13 +10,20 @@ pipeline {
                 echo "Connect webhook success"
             }
         }
-         stage('Sonacube'){
-                                  steps{
-                                       withSonarQubeEnv('sonarqube_server') {
-                                       sh 'mvn sonar:sonar'
-                                        }
-                                  }
+        stage('OWASP Dependency-Check Vulnerabilities'){
+                                steps{
+                                      sh 'mvn dependency-check:check'
+                                      dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+                                }
                             }
+         stage('Sonacube'){
+
+              steps{
+                     withSonarQubeEnv('sonarqube_server') {
+                         sh 'mvn sonar:sonar'
+                     }
+              }
+         }
 
     }
 
