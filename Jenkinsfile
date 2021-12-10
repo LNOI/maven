@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                echo "Jenkins Oke"
+                echo "Jenkins Oke-------------"
             }
         }
          stage('Sonacube'){
