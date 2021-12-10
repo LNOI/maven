@@ -10,6 +10,13 @@ pipeline {
                 echo "Jenkins Oke"
             }
         }
+         stage('Sonacube'){
+                                  steps{
+                                       withSonarQubeEnv('sonarqube_server') {
+                                       sh 'mvn sonar:sonar'
+                                        }
+                                  }
+                            }
 
     }
 
