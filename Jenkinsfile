@@ -11,23 +11,23 @@ pipeline {
             }
         }
 
-         stage('Code Security'){
-                        parallel{
-                            stage('OWASP Dependency-Check Vulnerabilities'){
-                                steps{
-                                      sh 'mvn dependency-check:check'
-                                      dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-                                }
-                            }
-                            stage('Sonacube'){
-                                  steps{
-                                       withSonarQubeEnv('sonarqube_server') {
-                                       sh 'mvn sonar:sonar'
-                                        }
-                                  }
-                            }
-                        }
-         }
+//          stage('Code Security'){
+//                         parallel{
+//                             stage('OWASP Dependency-Check Vulnerabilities'){
+//                                 steps{
+//                                       sh 'mvn dependency-check:check'
+//                                       dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+//                                 }
+//                             }
+//                             stage('Sonacube'){
+//                                   steps{
+//                                        withSonarQubeEnv('sonarqube_server') {
+//                                        sh 'mvn sonar:sonar'
+//                                         }
+//                                   }
+//                             }
+//                         }
+//          }
 
          stage('Build and push on Tomcat server local'){
                                  parallel{
@@ -38,7 +38,7 @@ pipeline {
                                      }
                                       stage('Push file tomcat server') {
                                                  steps {
-                                                    sh 'cp ./target/MyMaven.war /opt/tomcat/webapps'
+                                                    sh 'cp ./target/MyMaven.war /opt/tomcat/webapps/'
                                                  }
                                       }
                                  }
