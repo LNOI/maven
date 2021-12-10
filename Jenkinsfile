@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                echo "Connect webhook1"
+                echo "Connect webhook success"
             }
         }
          stage('Sonacube'){
