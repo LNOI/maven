@@ -29,6 +29,23 @@ pipeline {
                         }
          }
 
+         stage('Build and push on Tomcat server local'){
+                                 parallel{
+                                     stage('Build') {
+                                                 steps {
+                                                     sh 'mvn clean install'
+                                                 }
+                                     }
+                                      stage('Push file tomcat server') {
+                                                 steps {
+                                                    sh 'cp ./target/MyMaven.war /opt/tomcat/webapps'
+                                                 }
+                                      }
+                                 }
+         }
+
+
+
 
     }
 
