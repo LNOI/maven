@@ -86,10 +86,10 @@ pipeline {
                              steps{
                                   script{
                                         try{
-                                            sh "kubectl apply -f ."
+                                            sh "kubectl apply -f tomcatweb_k8s.yaml"
                                         }catch(error)
                                         {
-                                            sh "kubectl create -f ."
+                                            sh "kubectl apply -f tomcatweb_k8s.yaml"
                                         }
                                   }
                               }
