@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         PATH = "/opt/maven/bin:$PATH"
-//         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
     stages {
         stage('Init') {
