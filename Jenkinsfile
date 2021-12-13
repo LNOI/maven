@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                echo "Connect webhook success"
+                sh "kubectl delete deployment,services -l app=tomcatt"
+                sh "docker image rm -f tomcatweb:v1"
+                sh "docker image rm -f liveorlike/tomcatweb:v1"
             }
         }
 
@@ -71,10 +73,17 @@ pipeline {
                                                              sh 'docker push liveorlike/tomcatweb:v1'
                                                           }
           }
-         stage('End'){
-                             steps{
-                                  sh 'echo "End"'
 
+         stage('Deploy on K8S'){
+                             steps{
+                                  script{
+                                        try{
+                                            sh "kubectl apply -f ."
+                                        }catch(error)
+                                        {
+                                            sh "kubectl create -f ."
+                                        }
+                                  }
                               }
          }
 
