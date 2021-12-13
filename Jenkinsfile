@@ -87,11 +87,12 @@ pipeline {
                              steps{
                                   script{
                                         try{
-                                            sh "kubectl get nodes"
-                                            sh "kubectl apply -f tomcatweb_k8s.yaml"
+                                               kubernetesDeploy(configs:"tomcatweb_k8s.yaml",kubeconfigId:"mykubeconfig")
+//                                             sh "kubectl get nodes"
+//                                             sh "kubectl apply -f tomcatweb_k8s.yaml"
                                         }catch(error)
                                         {
-                                            sh "kubectl apply -f tomcatweb_k8s.yaml"
+                                            sh "Error"
                                         }
                                   }
                               }
