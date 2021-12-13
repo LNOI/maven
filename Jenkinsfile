@@ -49,7 +49,33 @@ pipeline {
                          sh 'sudo docker run --rm -u root:root -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://10.0.3.132:8081/MyMaven/ -g gen.cof  -r report.html'
                      }
          }
+         stage('Docker'){
+                                 parallel{
+                                     stage('Build') {
+                                                 steps {
+                                                     sh 'docker build -t tomcatweb:v1 -f Dockerfile . '
+                                                 }
+                                     }
+                                      stage('Login') {
+                                                 steps {
+                                                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                                                 }
+                                      }
+                                      stage('Push') {
+                                                 steps {
+                                                    sh 'docker tag tomcatweb:v1 liveorlike/tomcatweb:v1'
+                                                    sh 'docker push liveorlike/tomcatweb:v1'
+                                                 }
+                                      }
 
+                                 }
+         }
+         stage('End'){
+                             steps{
+                                  sh 'echo "End"'
+
+                              }
+         }
 
 
 
