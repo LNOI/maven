@@ -43,12 +43,12 @@ pipeline {
                                       }
                                  }
          }
-         stage('DAST OWASP ZAP '){
-                     steps{
-                         sh 'echo "Check OWASP ZAP"'
-                         sh 'sudo docker run --rm -u root:root -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://10.0.3.132:8081/MyMaven/ -g gen.cof  -r report.html'
-                     }
-         }
+//          stage('DAST OWASP ZAP '){
+//                      steps{
+//                          sh 'echo "Check OWASP ZAP"'
+//                          sh 'sudo docker run --rm -u root:root -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://10.0.3.132:8081/MyMaven/ -g gen.cof  -r report.html'
+//                      }
+//          }
          stage('Docker'){
                                  parallel{
                                      stage('Build') {
