@@ -7,9 +7,15 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                sh "kubectl delete deployment,services -l app=tomcatt"
-                sh "docker image rm -f tomcatweb:v1"
-                sh "docker image rm -f liveorlike/tomcatweb:v1"
+                 try{
+                       sh "kubectl delete deployment,services -l app=tomcatt"
+                       sh "docker image rm -f tomcatweb:v1"
+                       sh "docker image rm -f liveorlike/tomcatweb:v1"
+                 }catch(error)
+                 {
+                      echo "No"
+                 }
+
             }
         }
 
