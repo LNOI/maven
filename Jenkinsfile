@@ -61,15 +61,16 @@ pipeline {
                                                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                                                  }
                                       }
-                                      stage('Push') {
-                                                 steps {
-                                                    sh 'docker tag tomcatweb:v1 liveorlike/tomcatweb:v1'
-                                                    sh 'docker push liveorlike/tomcatweb:v1'
-                                                 }
-                                      }
+
 
                                  }
          }
+          stage('Push') {
+                                                          steps {
+                                                             sh 'docker tag tomcatweb:v1 liveorlike/tomcatweb:v1'
+                                                             sh 'docker push liveorlike/tomcatweb:v1'
+                                                          }
+          }
          stage('End'){
                              steps{
                                   sh 'echo "End"'
