@@ -86,14 +86,15 @@ pipeline {
          stage('Deploy on K8S'){
                              steps{
                                   script{
-                                        try{
-//                                                kubernetesDeploy(configs:"tomcatweb_k8s.yaml",kubeconfigId:"mykubeconfig")
-                                            sh "kubectl get nodes"
-//                                             sh "kubectl apply -f tomcatweb_k8s.yaml"
-                                        }catch(error)
-                                        {
-                                            sh "echo  'Error'"
-                                        }
+                                    sh "kubectl get nodes"
+//                                         try{
+// //                                                kubernetesDeploy(configs:"tomcatweb_k8s.yaml",kubeconfigId:"mykubeconfig")
+//                                             sh "kubectl get nodes"
+// //                                             sh "kubectl apply -f tomcatweb_k8s.yaml"
+//                                         }catch(error)
+//                                         {
+//                                             sh "echo  'Error'"
+//                                         }
                                   }
                               }
          }
