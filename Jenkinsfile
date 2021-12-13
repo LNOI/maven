@@ -14,6 +14,7 @@ pipeline {
                        sh "docker image rm -f liveorlike/tomcatweb:v1"
                  }catch(error)
                  {
+
                       echo "No"
                  }
                  }
@@ -86,6 +87,7 @@ pipeline {
                              steps{
                                   script{
                                         try{
+                                            sh "kubectl get nodes"
                                             sh "kubectl apply -f tomcatweb_k8s.yaml"
                                         }catch(error)
                                         {
