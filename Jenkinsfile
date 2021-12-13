@@ -84,8 +84,14 @@ pipeline {
 
          stage('Deploy on K8S'){
                              steps{
+<<<<<<< HEAD
 
                               kubernetesDeploy(configs:"tomcatweb_k8s.yaml",kubeconfigId:"mykubeconfig")
+=======
+//                               sh "minikube status"
+                              kubernetesDeploy(configs:"tomcatweb_k8s.yaml",kubeconfigId:"azure-kubeconfig")
+//                                   script{
+>>>>>>> 8502ded1f2e1a7b3d88268bbff49fa3c9a2a76b3
 
                               }
          }

@@ -25,7 +25,7 @@
         <div class="container">
           <img src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/elements/bootstrap-stack.png" srcset="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/elements/bootstrap-stack.png 1x, https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/elements/bootstrap-stack@2x.png 2x">
            <h1 class="display-1 text-bold">Milestone</h1>
-           <h5 class="text-gray-soft text-regular">thông cảm.</h5>
+           <h5 class="text-gray-soft text-regular">Lan cuoi ta ben nhau</h5>
         </div>
 
       </section>
